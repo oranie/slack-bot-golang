@@ -19,6 +19,7 @@ _testmain.go
 *.test
 .DS_Store
 */.DS_Store
+slack-bot-golang.cfg
 
 # godeps
 Godeps/Readme

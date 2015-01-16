@@ -1,0 +1,6 @@
+{
+  "webhook_url": "webhookurlを入れる",
+  "username": "botの名前",
+  "channel" : "チャンネル名",
+  "iconemoji" : "iconのやつ(:icon:とかのやつ)"
+}

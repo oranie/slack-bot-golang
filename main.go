@@ -46,7 +46,7 @@ func ReadConfig() (*Config, error) {
 		conf := Config{}
 		err = json.NewDecoder(file).Decode(&conf)
 		if err != nil {
-			log.Println("config json decode",err)
+			log.Println("config json decode",&conf,err)
 			return nil, err
 		}
 		return &conf, nil
@@ -62,19 +62,22 @@ func SlackPost(cfg *Config) error{
 	data.Username = cfg.Username
 	data.IconEmoji = cfg.IconEmoji
 	data.Parse = "full"
-	data.Text = "どうかな？"
+	data.Text = "ちょっとソースを書き換えたもので"
 	jsonData,err := json.Marshal(data)
+	log.Println(string(jsonData),err)
+
+	WebhookUrl := cfg.WebhookUrl
 
 	//log.Println(data,string(jsonData))
 
-	resp, err := http.PostForm(cfg.WebhookUrl ,
-		url.Values{"payload": {string(jsonData)}})
-	log.Println(resp,err)
+	resp, err := http.PostForm(WebhookUrl, url.Values{"payload": {string(jsonData)}})
+	log.Println(resp.Status,resp.Body," : ",err)
 	return err
 }
 
 func main() {
 	cfg, err := ReadConfig()
 	log.Println(cfg,err)
-	SlackPost(cfg)
+	err = SlackPost(cfg)
+	log.Println(err)
 }

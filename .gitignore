@@ -1,0 +1,46 @@
+# Dependencies
+.vendor
+
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+.idea
+
+# test
+coverage.txt
+coverage.out
+_testmain.go
+*.exe
+*.test
+.DS_Store
+*/.DS_Store
+
+# godeps
+Godeps/Readme
+Godeps/_workspace
+
+# grunt components
+node_modules/
+
+# bower components
+workspace/bower_components
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+/*.iml
+.idea/
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# tmp log
+logs/*.log
+logs/*.log.*

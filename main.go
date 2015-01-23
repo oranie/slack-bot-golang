@@ -44,6 +44,7 @@ func PostDataSTDOut(g *gin.Context){
 
 	g.BindWith(&message,binding.Form)
 	log.Println(message.Text)
+	log.Println(message)
 
 	log.Println(body)
 }

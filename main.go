@@ -4,6 +4,7 @@ import (
 	"log"
 	"bytes"
 	"github.com/gin-gonic/gin"
+	"os"
 )
 
 type slackHookMessage struct {
@@ -45,8 +46,8 @@ func main() {
 			slack.POST("/inbound",PostDataSTDOut)
 		}
 	}
-	//server.Run(":"+os.Getenv("PORT"))
-	server.Run(":8888")
+	server.Run(":"+os.Getenv("PORT"))
+	//server.Run(":8888")
 }
 
 func PostDataSTDOut(g *gin.Context){

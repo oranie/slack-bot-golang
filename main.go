@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"bytes"
+	"github.com/gin-gonic/gin/binding"
 )
 
 
@@ -36,12 +37,13 @@ type slackHookMesage struct {
 
 
 func PostDataSTDOut(g *gin.Context){
-	//var message slackHookMesage
+	var message slackHookMesage
 	bufbody := new(bytes.Buffer)
 	bufbody.ReadFrom(g.Request.Body)
 	body := bufbody.String()
 
-	//g.Bind(&message)
+	g.BindWith(&message,binding.Form)
+	log.Println(message.Text)
 
 	log.Println(body)
 }

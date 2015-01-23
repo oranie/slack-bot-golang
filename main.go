@@ -36,7 +36,7 @@ type slackHookMesage struct {
 
 func PostDataSTDOut(g *gin.Context){
 	var message slackHookMesage
-	log.Println(g.Request.Body)
+	log.Println(string(g.Request.Body))
 	g.Bind(&message)
 
 	log.Println(message)

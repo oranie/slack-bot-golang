@@ -22,8 +22,8 @@ _testmain.go
 slack-bot-golang.cfg
 
 # godeps
-Godeps/Readme
-Godeps/_workspace
+#Godeps/Readme
+#Godeps/_workspace
 
 # grunt components
 node_modules/

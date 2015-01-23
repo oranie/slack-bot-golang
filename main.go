@@ -24,15 +24,15 @@ func main() {
 }
 
 type slackHookMesage struct {
-	Token string  `json:"token"`
-	TeamId string  `json:"team_id"`
-	ChannelId string  `json:"channel_id"`
-	ChannelName string  `json:"channel_name"`
-	Timestamp float32  `json:"timestamp"`
-	UserId  string  `json:"user_id"`
-	UserName string  `json:"user_name"`
-	Text string  `json:"text"`
-	TriggerWord string  `json:"trigger_word"`
+	Token string  `form:"token"`
+	TeamId string  `form:"team_id"`
+	ChannelId string  `form:"channel_id"`
+	ChannelName string  `form:"channel_name"`
+	Timestamp float32  `form:"timestamp"`
+	UserId  string  `form:"user_id"`
+	UserName string  `form:"user_name"`
+	Text string  `form:"text"`
+	TriggerWord string  `form:"trigger_word"`
 }
 
 

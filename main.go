@@ -1,11 +1,13 @@
 package main
 
 import (
+
 	"log"
 	"net/http"
+	"os"
 )
 
-type slackHookMessage struct {
+type slackHookMesage struct {
 	Token string  `json:"token"`
 	TeamId string  `json:"team_id"`
 	ChannelId string  `json:"channel_id"`
@@ -34,8 +36,7 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 
 }
 
-
 func main() {
 	http.HandleFunc("/v1/slack/inbound", BindSlackData)
-	http.ListenAndServe(":8888", nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }

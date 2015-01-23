@@ -23,13 +23,10 @@ slack-bot-golang.cfg
 
 # godeps
 #Godeps/Readme
-#Godeps/_workspace
 
 # grunt components
-node_modules/
 
 # bower components
-workspace/bower_components
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 /*.iml

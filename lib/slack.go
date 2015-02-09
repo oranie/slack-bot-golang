@@ -1,13 +1,9 @@
 package lib
 
 import (
-	"os"
-	"net/url"
-	"net/http"
-	"log"
-	"encoding/json"
 	"errors"
-	"os/user"
+	"log"
+	"os"
 )
 
 type SlackMsg struct {
@@ -25,6 +21,23 @@ type Config struct {
 	IconEmoji string `json:"iconemoji"`
 }
 
+//if you use heroku config
+func ReadConfig() (*Config, error) {
+	var conf Config
+	conf.WebhookUrl = os.Getenv("webhook_url")
+	conf.Channel = os.Getenv("channel")
+	conf.Username = os.Getenv("username")
+	conf.IconEmoji = os.Getenv("iconemoji")
+	if conf != nil{
+		return conf, nil
+	}
+
+	return nil, errors.New("Config file not found")
+}
+
+
+
+/* if you use config 
 func ReadConfig() (*Config, error) {
 	homeDir := ""
 	usr, err := user.Current()
@@ -58,6 +71,7 @@ func ReadConfig() (*Config, error) {
 
 	return nil, errors.New("Config file not found")
 }
+*/
 
 func SlackPost(imegeUrl string ,cfg *Config) error{
 

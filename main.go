@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
-	"./lib"
+	"github.com/oranie/slack-bot-golang/lib"
 )
 
 type SlackHookMesage struct {

@@ -1,5 +1,14 @@
 {
 	"ImportPath": "github.com/oranie/slack-bot-golang",
 	"GoVersion": "go1.3",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/jteeuwen/go-pkg-rss",
+			"Rev": "975dd7ebf463532c816b6cb8fe3c80b2c652ee0a"
+		},
+		{
+			"ImportPath": "github.com/jteeuwen/go-pkg-xmlx",
+			"Rev": "89d27a9deeac1b64d0cf317c2b4a0878f338b76d"
+		}
+	]
 }

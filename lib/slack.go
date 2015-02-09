@@ -1,7 +1,6 @@
 package lib
 
 import (
-	"errors"
 	"log"
 	"os"
 	"net/http"
@@ -32,8 +31,8 @@ func ReadConfig() (*Config, error) {
 	conf.Username = os.Getenv("username")
 	conf.IconEmoji = os.Getenv("iconemoji")
 	log.Println("config:",conf)
-
-	return nil, errors.New("Config file not found")
+	
+	return conf,nil
 }
 
 

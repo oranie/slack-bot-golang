@@ -37,8 +37,10 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 	log.Println(postData)
 	
 	query := strings.Fields(postData.Text)
+	log.Println("query string:",query[0]," text string",query[1])
 	if query[0] == "image" {
 		imageUrl,err := lib.FetchImageUrl(query[1])
+		log.Println("image url:",imageUrl)
 		if err != nil {
 			log.Println("not image query")
 		}

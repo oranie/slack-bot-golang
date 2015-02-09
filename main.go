@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"github.com/oranie/slack-bot-golang"
 )
 
 type slackHookMesage struct {
@@ -33,7 +34,6 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 	postData.TriggerWord = r.FormValue("trigger_word")
 
 	log.Println(postData)
-
 }
 
 func main() {

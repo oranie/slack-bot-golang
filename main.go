@@ -5,10 +5,11 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"github.com/oranie/slack-bot-golang"
+	"strings"
+	"./lib"
 )
 
-type slackHookMesage struct {
+type SlackHookMesage struct {
 	Token string  `json:"token"`
 	TeamId string  `json:"team_id"`
 	ChannelId string  `json:"channel_id"`
@@ -22,7 +23,7 @@ type slackHookMesage struct {
 
 
 func BindSlackData(w http.ResponseWriter, r *http.Request)  {
-	var postData slackHookMessage
+	var postData SlackHookMesage
 	postData.Token = r.FormValue("token")
 	postData.TeamId = r.FormValue("team_id")
 	postData.ChannelId = r.FormValue("channel_id")
@@ -34,9 +35,20 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 	postData.TriggerWord = r.FormValue("trigger_word")
 
 	log.Println(postData)
+	
+	query := strings.Fields(postData.Text)
+	if query[0] == "image" {
+		imageUrl,err := lib.FetchImageUrl(query[1])
+		if err != nil {
+			log.Println("not image query")
+		}
+		cfg,err := lib.ReadConfig()
+		lib.SlackPost(imageUrl,cfg)
+	}
 }
 
 func main() {
 	http.HandleFunc("/v1/slack/inbound", BindSlackData)
 	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+	//http.ListenAndServe(":8000", nil)
 }

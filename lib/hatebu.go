@@ -1,4 +1,4 @@
-package  main
+package  lib
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	rss "github.com/jteeuwen/go-pkg-rss"
 )
 
-func main() {
+func GetHatebu() {
 	timeout := 5
 	keyword := "これはひどい"
 	uri := "http://b.hatena.ne.jp/search/tag?safe=off&q=" + keyword + "&mode=rss" + "&users=30&sort=recent"

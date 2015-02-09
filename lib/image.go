@@ -1,4 +1,4 @@
-package main
+package lib
 
 
 import (
@@ -42,12 +42,12 @@ type Result struct {
 }
 
 
-func fetchImageUrl(s string) {
+func FetchImageUrl(s string) (string,error)  {
 	client := &http.Client{Timeout: time.Duration(10) * time.Second}
 	req, err := http.NewRequest("GET","http://ajax.googleapis.com/ajax/services/search/images?" , nil)
 	if err != nil {
 		log.Println(err)
-		return
+		return "", err
 	}
 
 	values := url.Values{}
@@ -63,21 +63,16 @@ func fetchImageUrl(s string) {
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Println(err)
-		return
+		return "", err
 	}
 	defer resp.Body.Close()
 
 	var responseData ResponseData
 	b, err := ioutil.ReadAll(resp.Body)
 	err = json.Unmarshal(b, &responseData)
-	log.Println(responseData.ResponseData.Results[(rand.Intn(8))].Url)
+	
+	randUrl := responseData.ResponseData.Results[(rand.Intn(8))].Url
+	log.Println(randUrl)
 
-}
-
-
-func execute(resp *http.Response) {
-	b, err := ioutil.ReadAll(resp.Body)
-	if err == nil {
-		log.Println(string(b))
-	}
+	return randUrl,err
 }

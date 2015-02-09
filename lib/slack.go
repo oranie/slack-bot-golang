@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"os"
@@ -55,14 +55,14 @@ func ReadConfig() (*Config, error) {
 	return nil, errors.New("Config file not found")
 }
 
-func SlackPost(cfg *Config) error{
+func SlackPost(imegeUrl string ,cfg *Config) error{
 
 	var data SlackMsg
 	data.Channel = cfg.Channel
 	data.Username = cfg.Username
 	data.IconEmoji = cfg.IconEmoji
 	data.Parse = "full"
-	data.Text = "ちょっとソースを書き換えたもので"
+	data.Text = imegeUrl
 	jsonData,err := json.Marshal(data)
 	log.Println(string(jsonData),err)
 
@@ -71,7 +71,7 @@ func SlackPost(cfg *Config) error{
 	//log.Println(data,string(jsonData))
 
 	resp, err := http.PostForm(WebhookUrl, url.Values{"payload": {string(jsonData)}})
-log.Println(resp.Status,resp.Body," : ",err)
-return err
+	log.Println(resp.Status,resp.Body," : ",err)
+	return err
 }
 

@@ -71,7 +71,7 @@ func FetchImageUrl(s string) (string,error)  {
 	b, err := ioutil.ReadAll(resp.Body)
 	err = json.Unmarshal(b, &responseData)
 	
-	randUrl := responseData.ResponseData.Results[(rand.Intn(8))].Url
+	randUrl := responseData.ResponseData.Results[(rand.Intn(8))].UnescapedUrl
 	log.Println(randUrl)
 
 	return randUrl,err

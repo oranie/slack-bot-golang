@@ -33,7 +33,7 @@ func ReadConfig() (*Config, error) {
 	}
 	log.Println("dir is :",homeDir,usr)
 
-	for _, path := range []string{ homeDir + "/.slack-bot-golang.cfg", "./slack-bot-golang.cfg"} {
+	for _, path := range []string{ homeDir + "/.slack-bot-golang.cfg", "./slack-bot-golang.cfg","/app/slack-bot-golang.cfg"} {
 		file, err := os.Open(path)
 		if os.IsNotExist(err) {
 			continue

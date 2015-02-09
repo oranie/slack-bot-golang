@@ -49,6 +49,11 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 			log.Println("not image query")
 		}
 		cfg,err := lib.ReadConfig()
+		if err != nil{
+			log.Println("ReadConfig error! ", err)
+			return
+		}
+		
 		log.Println("config setting:",cfg.WebhookUrl)
 		lib.SlackPost(imageUrl,cfg)
 	}

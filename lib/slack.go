@@ -31,6 +31,7 @@ func ReadConfig() (*Config, error) {
 	if err == nil {
 		homeDir = usr.HomeDir
 	}
+	log.Println("dir is :",homeDir,usr)
 
 	for _, path := range []string{ homeDir + "/.slack-bot-golang.cfg", "./slack-bot-golang.cfg"} {
 		file, err := os.Open(path)
@@ -49,8 +50,10 @@ func ReadConfig() (*Config, error) {
 			log.Println("config json decode",&conf,err)
 			return nil, err
 		}
+		log.Println("ReadConfig cfg:",conf)
 		return &conf, nil
 	}
+	log.Println("don't read config file")
 
 	return nil, errors.New("Config file not found")
 }

@@ -25,14 +25,14 @@ type Config struct {
 
 //if you use heroku config
 func ReadConfig() (*Config, error) {
-	var conf Config
-	conf.WebhookUrl = os.Getenv("webhook_url")
-	conf.Channel = os.Getenv("channel")
-	conf.Username = os.Getenv("username")
-	conf.IconEmoji = os.Getenv("iconemoji")
-	log.Println("config:",conf)
-	
-	return conf,nil
+	var cfg Config
+	cfg.WebhookUrl = os.Getenv("webhook_url")
+	cfg.Channel = os.Getenv("channel")
+	cfg.Username = os.Getenv("username")
+	cfg.IconEmoji = os.Getenv("iconemoji")
+	log.Println("config:",cfg)
+
+	return &cfg,nil
 }
 
 

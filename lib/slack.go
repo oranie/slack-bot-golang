@@ -31,6 +31,7 @@ func ReadConfig() (*Config, error) {
 	conf.Channel = os.Getenv("channel")
 	conf.Username = os.Getenv("username")
 	conf.IconEmoji = os.Getenv("iconemoji")
+	log.Println("config:",conf)
 
 	return nil, errors.New("Config file not found")
 }

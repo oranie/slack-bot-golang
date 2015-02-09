@@ -68,13 +68,14 @@ func SlackPost(imegeUrl string ,cfg *Config) error{
 	data.Parse = "full"
 	data.Text = imegeUrl
 	jsonData,err := json.Marshal(data)
-	log.Println(string(jsonData),err)
-
 	WebhookUrl := cfg.WebhookUrl
-
-	//log.Println(data,string(jsonData))
+	
+	log.Println("jsonData:",string(jsonData),err)
 
 	resp, err := http.PostForm(WebhookUrl, url.Values{"payload": {string(jsonData)}})
+	if err != nil{
+		log.Println("post Form Error:",resp,err)
+	}
 	log.Println(resp.Status,resp.Body," : ",err)
 	return err
 }

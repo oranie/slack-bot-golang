@@ -56,7 +56,7 @@ func FetchImageUrl(s string) (string,error)  {
 	values.Add("rsz","8")
 	values.Add("start","1")
 	values.Add("filter","1")
-	req.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; MAFSJS; rv:11.0) like Gecko")
+	req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36")
 	req.URL.RawQuery = values.Encode()
 
 

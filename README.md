@@ -22,4 +22,4 @@ heroku config:add iconemoji=":maro:"
 
 # Use case
 
-http://i.gyazo.com/5a10199a515261142662e559d610bd5b.png
+![maro](http://i.gyazo.com/5a10199a515261142662e559d610bd5b.png)

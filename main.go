@@ -39,7 +39,7 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 	textFields := strings.Fields(postData.Text)
 	hookMsg := textFields[0]
 	imageExecuteFlg := textFields[1]
-	query := textFields[2]
+	query := strings.Join(textFields[2:], " ")
 	
 	log.Println("hook msg:",hookMsg," image flg:",imageExecuteFlg ," text string:",query)
 	if imageExecuteFlg == "image" {

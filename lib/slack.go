@@ -37,7 +37,7 @@ func ReadConfig() (*Config, error) {
 
 
 
-/* if you use config 
+/* if you use config file
 func ReadConfig() (*Config, error) {
 	homeDir := ""
 	usr, err := user.Current()

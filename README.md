@@ -15,7 +15,11 @@ git push heroku master
 ```
 example:
 heroku config:add webhook_url="https://hooks.slack.com/services/~~~~~"
-heroku config:add username="test_post_user"
+heroku config:add username="maro"
 heroku config:add channel="#randam"
-heroku config:add iconemoji=":test_post_user:"
+heroku config:add iconemoji=":maro:"
 ```
+
+# Use case
+
+http://i.gyazo.com/5a10199a515261142662e559d610bd5b.png

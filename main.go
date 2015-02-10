@@ -41,7 +41,7 @@ func BindSlackData(w http.ResponseWriter, r *http.Request)  {
 	imageExecuteFlg := textFields[1]
 	query := strings.Join(textFields[2:], " ")
 	
-	log.Println("hook msg:",hookMsg," image flg:",imageExecuteFlg ," text string:",query)
+	log.Println("hook msg:",hookMsg," image flg:",imageExecuteFlg ," query string:",query)
 	if imageExecuteFlg == "image" {
 		imageUrl,err := lib.FetchImageUrl(query)
 		log.Println("image url:",imageUrl)

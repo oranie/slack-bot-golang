@@ -1,26 +1,26 @@
 package lib
 
 import (
+	"encoding/json"
 	"log"
-	"os"
 	"net/http"
 	"net/url"
-	"encoding/json"
+	"os"
 )
 
 type SlackMsg struct {
-	Channel string `json:"channel"`
-	Username string `json:"username,omitempty"`
-	Text string `json:"text"`
-	Parse string `json:"parse"`
+	Channel   string `json:"channel"`
+	Username  string `json:"username,omitempty"`
+	Text      string `json:"text"`
+	Parse     string `json:"parse"`
 	IconEmoji string `json:"icon_emoji,omitempty"`
 }
 
 type Config struct {
 	WebhookUrl string `json:"webhook_url"`
-	Channel string `json:"channel"`
-	Username string `json:"username"`
-	IconEmoji string `json:"iconemoji"`
+	Channel    string `json:"channel"`
+	Username   string `json:"username"`
+	IconEmoji  string `json:"iconemoji"`
 }
 
 //if you use heroku config
@@ -30,12 +30,10 @@ func ReadConfig() (*Config, error) {
 	cfg.Channel = os.Getenv("channel")
 	cfg.Username = os.Getenv("username")
 	cfg.IconEmoji = os.Getenv("iconemoji")
-	log.Println("config:",cfg)
+	log.Println("config:", cfg)
 
-	return &cfg,nil
+	return &cfg, nil
 }
-
-
 
 /* if you use config file
 func ReadConfig() (*Config, error) {
@@ -73,7 +71,7 @@ func ReadConfig() (*Config, error) {
 }
 */
 
-func SlackPost(imegeUrl string ,cfg *Config) error{
+func SlackPost(imegeUrl string, cfg *Config) error {
 
 	var data SlackMsg
 	data.Channel = cfg.Channel
@@ -81,16 +79,15 @@ func SlackPost(imegeUrl string ,cfg *Config) error{
 	data.IconEmoji = cfg.IconEmoji
 	data.Parse = "full"
 	data.Text = imegeUrl
-	jsonData,err := json.Marshal(data)
+	jsonData, err := json.Marshal(data)
 	WebhookUrl := cfg.WebhookUrl
-	
-	log.Println("jsonData:",string(jsonData),err)
+
+	log.Println("jsonData:", string(jsonData), err)
 
 	resp, err := http.PostForm(WebhookUrl, url.Values{"payload": {string(jsonData)}})
-	if err != nil{
-		log.Println("post Form Error:",resp,err)
+	if err != nil {
+		log.Println("post Form Error:", resp, err)
 	}
-	log.Println(resp.Status,resp.Body," : ",err)
+	log.Println(resp.Status, resp.Body, " : ", err)
 	return err
 }
-
